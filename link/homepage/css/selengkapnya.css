@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;400&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-image: url('../../../images/moww-3.png');
+    background-size: cover;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Selengkapnya */
+.title-selengkapnya {
+    display: flex;
+    margin: 40px 0;
+    align-items: center;
+    text-align: center;
+    font-size: 1.5em;
+    justify-content: center;
+    color: #6F9DFF;
+  }
+  .title-selengkapnya button {
+    color: white;
+    font-size: 30px;
+    border: none;
+    background-color: #6F9DFF;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    transition: all .5s ease;
+  }
+  .title-selengkapnya button:hover{
+    transform: scale(1.1);
+  }
+  .title-selengkapnya h1 {
+    margin-left: 50px;
+    font-weight: 700;
+  }
+  .content-selengkapnya img {
+    width: 60%;
+    border-radius: 30px;
+  }
+  .content-selengkapnya{
+    text-align: center;
+  }
+  .content-selengkapnya p{
+    margin: 20px 0;
+    font-weight: bold;
+  }
+  

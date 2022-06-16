@@ -136,7 +136,7 @@ melindungi dan mengamankan akun</p>
                     <div class="profile col-md-6">
                         <div class="row">
                             <div class="top col-md-3">
-                                <h6>ID Pegawai</h6>
+                                <h6>ID Pemilik</h6>
                                 <input type="text" disabled value="<?php echo $row['id'] ?>">
                             </div>
                             <div class="bot col-md-5">
@@ -191,7 +191,7 @@ melindungi dan mengamankan akun</p>
         ?>
         <script type="text/javascript">
             alert("Update Successfull");
-            window.location = 'index.php';
+            window.location = 'profil.php';
         </script>
         <?php 
     }

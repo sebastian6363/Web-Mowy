@@ -12,6 +12,7 @@
 
     <!-- Style Web -->
     <link rel="stylesheet" href="css/produk.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
 </head>
 <body>
 
@@ -83,6 +84,13 @@
                     <span class="nav_name">Keranjang</span>
                 </a>
                 <span class="tool_tip">Keranjang</span>
+            </li>
+            <li>
+                <a href="ulasan.php">
+                    <i class='bi bi-envelope-open'></i>
+                    <span class="nav_name">Ulasan</span>
+                </a>
+                <span class="tool_tip">Ulasan</span>
             </li>
 
             <!-- Sosial media -->

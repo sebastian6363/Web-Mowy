@@ -31,8 +31,8 @@
     <div class="popup">
         <div class="wrap container">
             <div class="title-2">
-                <h1>Form Tambah Data Produk</h1>
-                <p>Isikan semua data yang dibutuhkan untuk menambahkan produk baru Anda!</p>
+                <h1>Form Edit Data Produk</h1>
+                <p>Isikan semua data yang benar!</p>
             </div>
             <form class="form" action="#" method="POST" enctype="multipart/form-data">
                 <div class="form-element">

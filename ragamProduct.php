@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.88.1">
-    <title>MOWY | Welcome Page</title>
+    <title>Welcome Page</title>
 
     <!-- Bootstrap core CSS -->
     <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -29,7 +29,6 @@
     </style>
 
     <!-- Custom styles for this web -->
-    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="link/homepage/css/style.css">
     <link rel="stylesheet" href="link/homepage/css/signin.css">
 
@@ -52,10 +51,10 @@
       <div class="logo">
         <span><img src="images/Logo Mowy.png" alt="logo" width="200" height="75"></span>
       </div>
-      <ul class="mt-4" id="navigation ">
-        <li class='active'><a href="index.php">Dashboard</a></li>
-        <li ><a href="ragamProduct.php">Ragam Produk</a></li>
-        <li ><a href="tentangKami.php">Tentang Kami</a></li>
+      <ul class="mt-4">
+        <li><a href="index.php">Dashboard</a></li>
+        <li class="active"><a href="ragamProduct.php">Ragam Produk</a></li>
+        <li><a href="tentangKami.php">Tentang Kami</a></li>
       </ul>
       <div class="reg-log mt-2">
         <a href="registrasi_revisi.php"><button class="btn btn-primary btn-lg px-4 me-md-2" type="button" id="reg">Registrasi</button></a>
@@ -65,26 +64,14 @@
 
     <main>
       <div class="container col-xxl-8 px-4 py-5">
-        <div class="row flex-lg-row-reverse align-items-center g-5 py-2">
+        <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
           <div class="col-10 col-sm-8 col-lg-6">
             <img src="images/Sapi.png" class="d-block mx-lg-auto img-fluid" alt="sapi" width="1280" height="720" loading="lazy">
           </div>
           <div class="col-lg-6">
             <h1 class="display-5 fw-bold lh-1 mb-3">Mengapa MOWY?</h1>
             <p class="lead" style="font-size: 400; color: #000000A6;">Kalau bisa menikmati susu dari sapi yang bahagia karena diberi kasih sayang, mengapa tidak?</p>
-            <a href="selengkapnya.php"><button class="btn-selengkapnya" type="button">Selengkapnya</button></a>
           </div>
-        </div>
-        <div class="sosial-media">
-          <a href="mowydairyfarm@gmail.com" target="_blank">
-              <i class='sosial bx bxl-gmail' id="gmail"></i>
-          </a>
-          <a href="https://www.instagram.com/mowy_dairyfarm/" target="_blank">
-              <i class='sosial bx bxl-instagram-alt' id="instagram"></i>
-          </a>
-          <a href="http://wa.me/+628813430521" target="_blank">
-              <i class='sosial bx bxl-whatsapp' id="whatsapp"></i>
-          </a>          
         </div>
     </main>
 

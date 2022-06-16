@@ -25,6 +25,7 @@ $row = mysqli_fetch_array($query);
 
     <!-- Style Web -->
     <link rel="stylesheet" href="css/profil.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
 </head>
 <body>
     <?php 
@@ -95,6 +96,13 @@ $row = mysqli_fetch_array($query);
                 </a>
                 <span class="tool_tip">Keranjang</span>
             </li>
+            <li>
+                <a href="ulasan.php">
+                    <i class='bi bi-envelope-open'></i>
+                    <span class="nav_name">Ulasan</span>
+                </a>
+                <span class="tool_tip">Ulasan</span>
+            </li>
 
             <!-- Sosial media -->
             <div class="sosial-media">
@@ -128,7 +136,7 @@ $row = mysqli_fetch_array($query);
                     <div class="profile col-md-6">
                         <div class="row">
                             <div class="top col-md-3">
-                                <h6>ID Pegawai</h6>
+                                <h6>ID Pembeli</h6>
                                 <input type="text" disabled value="<?php echo $row['id'] ?>">
                             </div>
                             <div class="bot col-md-5">
@@ -183,7 +191,7 @@ $row = mysqli_fetch_array($query);
         ?>
         <script type="text/javascript">
             alert("Update Successfull");
-            window.location = 'index.php';
+            window.location = 'profil.php';
         </script>
         <?php 
     }

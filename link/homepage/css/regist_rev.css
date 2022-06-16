@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,700;0,800;1,400&display=swap');
+
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    position: relative;
+    background-image: url('../../../images/moww-2.png');
+    background-size: cover;
+}
+
+.judul h1 {
+    color: #6F9DFF;
+    font-weight: 700;
+}
+.judul p {
+    color: #000000A6;
+    font-weight: 400;
+}
+
+.content {
+    width: 65%;
+}
+.content .form-element {
+    margin: 10px 0;
+}
+.content .form-element input {
+    border-radius: 20px;
+    box-shadow: 2px 3px  #b6b6b6;
+
+    font-size: 12px;
+    padding: 10px 25px;
+}
+.content .form-element label {
+    font-weight: 500;
+}
+
+.btn {
+    display: block;
+    margin-top: 20px;
+}
+.btn button {
+    border-radius: 20px;
+    border: none;
+
+    padding: 3px;
+    font-weight: 500;
+    color: #FFFFFF;
+    background-color: #6F9DFF;
+
+    width: 50%;
+    transition: all .5s ease;
+}
+.btn button:hover{
+    transform: scale(1.1);
+}
+.btn p {
+    margin-top: 5px;
+    
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.65);
+}
+.btn a {
+    text-decoration: none;
+    color: #6F9DFF;
+}
+.btn a:hover {
+    text-decoration: underline;
+}

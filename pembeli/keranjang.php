@@ -24,6 +24,7 @@
 
     <!-- Style Web -->
     <link rel="stylesheet" href="css/keranjang.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
 
 </head>
 <body>
@@ -87,6 +88,13 @@
                     <span class="nav_name">Keranjang</span>
                 </a>
                 <span class="tool_tip">Keranjang</span>
+            </li>
+            <li>
+                <a href="ulasan.php">
+                    <i class='bi bi-envelope-open'></i>
+                    <span class="nav_name">Ulasan</span>
+                </a>
+                <span class="tool_tip">Ulasan</span>
             </li>
 
             <!-- Sosial media -->
@@ -153,16 +161,15 @@
             ?>
 
             <div class="form-group row d-flex">
-                <label for="total_harga" style="color: red; text-align: right;">Total harga: Rp. <?php echo $data['total']; ?> </label>
-                <input type="hidden" name="total_harga" id="total_harga" value="<?php echo $data['total'] ?>">
+                <label for="total_harga" style="color: red; text-align: right;">Total harga: Rp. <span id="hasil"></span> </label>
+                <input type="hidden" name="total_harga" id="total_harga" onchange="math()" value="<?php echo $data['total'] ?>">
+                <input type="hidden" name="tot_harga" id="tot_harga" value="<?php echo $data['total'] ?>">
             </div>
 
             <?php endwhile ?>
 
             <div class="form-group get">
-                <input type="hidden" name="jumlah" id="jumlah" value="<?php echo $_GET['jumlah'] ?>">
-                <input type="hidden" name="harga" id="harga" value="<?php echo $_GET['harga'] ?>">
-                <input type="hidden" name="pelanggan" id="pelanggan">
+                <input type="hidden" name="pelanggan" id="pelanggan" value="<?php echo $pembeli ?>">
             </div>
 
             <div class="form-group row">
@@ -176,16 +183,15 @@
             </div>
             <div class="form-group row">
                 <label for="pengiriman">Informasi Pengiriman</label>
-                <select name="pengiriman" id="pengiriman" class="form-select" required>
-                    <option value="-" selected>-</option>
-                    <option value="JNE">JNE (Rp. 8.000,00)</option>
-                    <option value="SICEPAT">Si Cepat (Rp. 10.000,00)</option>
+                <select name="pengiriman" id="pengiriman" class="form-select" onchange="math()" required>
+                    <option value="0" selected>-</option>
+                    <option value="8000">JNE (Rp. 8.000,00)</option>
+                    <option value="10000">Si Cepat (Rp. 10.000,00)</option>
                 </select>
             </div>
             <div class="form-group row">
                 <label for="image">Upload bukti pembayaran</label>
-                <input type="file" name="image" id="image" class="form-control
-                " required>
+                <input type="file" name="image" id="image" class="form-control" required>
             </div>
             <div class="form-group submit">
                 <button name="submit" type="submit" id="submit">Buat Transaksi</button>
@@ -206,9 +212,22 @@
         }
     </script>
 
+    <!-- Penjumlahan -->
+    <script type="text/javascript">
+        function math() {
+            var a = parseInt(document.getElementById('total_harga').value);
+            var b = parseInt(document.getElementById('pengiriman').value);
+            if (a&&b);
+            document.getElementById('hasil').innerHTML = a + b;
+
+        }
+    </script>
+
     <!-- Memasukkan bukti transfer -->
     <?php 
     
+    include "../link/homepage/koneksi.php";
+
     if (isset($_POST['submit'])) {
         date_default_timezone_set("Asia/Jakarta");
         $target = "../images/transaction/".basename($_FILES['image']['name']);
@@ -218,15 +237,18 @@
 
         $produk = $_POST['id_produk'];
         $jumlah = $_POST['jumlah'];
-        $harga = $_POST['harga'];
-        $total = $_POST['total_harga'];
+        $total = $_POST['tot_harga'];
+        $pelanggan = $_POST['pelanggan'];
+        $status = 'Ongoing';
 
-        $add_data = "INSERT INTO data_transaksi (jumlah_produk, waktu_transaksi, bukti_transaksi, id_pembeli, id_produk, jumlah_produk, total, status)
-                VALUES ('$jumlah', '$waktu', '$bukti', '$pembeli', '$produk', '$jumlah', '$total', 'Ongoing')";
+        $add_data = "INSERT INTO data_transaksi 
+        (waktu_transaksi, bukti_transaksi, id_pembeli, id_produk, jumlah_produk, total, status)
+                VALUES ('$waktu', '$bukti', '$pelanggan', '$produk', '$jumlah', '$total', '$status') ";
         
         mysqli_query($conn, $add_data);
 
         move_uploaded_file($_FILES['image']['tmp_name'], $target);
+
         ?>
         <script type="text/javascript">
             alert("Berhasil menambahkan transaksi! Silahkan tunggu konfirmasi dari kami <3")

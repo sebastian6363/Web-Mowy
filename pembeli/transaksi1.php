@@ -1,6 +1,7 @@
 <?php 
     
     session_start();
+    $pembeli = $_SESSION['id'];
 
     if($_SESSION['level'] == '') {
         header("location:index.php?pesan=gagal");
@@ -22,6 +23,7 @@
 
     <!-- Style Web -->
     <link rel="stylesheet" href="css/transaksi.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
 
 </head>
 <body>
@@ -86,6 +88,13 @@
                 </a>
                 <span class="tool_tip">Keranjang</span>
             </li>
+            <li>
+                <a href="ulasan.php">
+                    <i class='bi bi-envelope-open'></i>
+                    <span class="nav_name">Ulasan</span>
+                </a>
+                <span class="tool_tip">Ulasan</span>
+            </li>
 
             <!-- Sosial media -->
             <div class="sosial-media">
@@ -115,7 +124,7 @@
 
             require "../link/homepage/koneksi.php";
 
-            $query = "SELECT * FROM data_transaksi JOIN data_produk ON data_transaksi.id_produk = data_produk.id_produk WHERE data_transaksi.status = 'Riwayat'";
+            $query = "SELECT * FROM data_transaksi JOIN data_produk ON data_transaksi.id_produk = data_produk.id_produk WHERE data_transaksi.status = 'Riwayat' AND data_transaksi.id_pembeli = '$pembeli'";
             $result = $conn -> query($query);
 
             while ($row = $result -> fetch_assoc()):
@@ -139,7 +148,7 @@
             <?php endwhile ?>
             <div class="pindah">
                 <div class="btn">
-                    <a href="transaksi.php"><button type="button" class="btn btn-primary center-block">Riwayat Transaksi</button></a>
+                    <a href="transaksi.php"><button type="button" class="btn btn-primary center-block">Sedang Berlangsung</button></a>
                 </div>
             </div>
         </div>

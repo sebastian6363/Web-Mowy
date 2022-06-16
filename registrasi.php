@@ -74,7 +74,6 @@ if (isset($_POST['submit'])) {
         $confirm = $_POST['confirm'];
         $level = 'Pembeli';
 
-        if ($password =! $confirm) {
             $add_data = "INSERT INTO data_user
             (nama, alamat, no_hp, gender, email, username, password, level)
                                 VALUES
@@ -89,7 +88,6 @@ if (isset($_POST['submit'])) {
             </script>
             <?php
         }
-    }
 ?>
 </body>
 </html>

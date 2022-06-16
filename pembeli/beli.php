@@ -145,7 +145,6 @@ while ($row = $result -> fetch_assoc()):
         ?>
 
         <script type="text/javascript">
-            alert("Berhasil ditambahkan dalam keranjang")
             window.location = 'keranjang.php'
         </script>
         <?php 

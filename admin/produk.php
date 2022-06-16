@@ -236,10 +236,12 @@
     (nama_produk, gambar_produk, rasa_produk, harga_produk, berat_produk, tanggal_kedaluwarsa)
                         VALUES
     ('$nama', '$image', '$rasa', '$harga', '$berat', '$tanggal')";
-    mysqli_query($conn, $add_data);
+    
 
     // Move gambar ke path
     move_uploaded_file($_FILES['image']['tmp_name'], $target);
+
+    $cek = mysqli_query($conn, $add_data);
 
     ?>
     <script type="text/javascript">

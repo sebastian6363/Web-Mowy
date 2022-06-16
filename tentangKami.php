@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.88.1">
-    <title>MOWY | Welcome Page</title>
+    <title>Welcome Page</title>
 
     <!-- Bootstrap core CSS -->
     <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -52,10 +52,10 @@
       <div class="logo">
         <span><img src="images/Logo Mowy.png" alt="logo" width="200" height="75"></span>
       </div>
-      <ul class="mt-4" id="navigation ">
-        <li class='active'><a href="index.php">Dashboard</a></li>
-        <li ><a href="ragamProduct.php">Ragam Produk</a></li>
-        <li ><a href="tentangKami.php">Tentang Kami</a></li>
+      <ul class="mt-4">
+        <li><a href="index.php">Dashboard</a></li>
+        <li><a href="ragamProduct.php">Ragam Produk</a></li>
+        <li class="active"><a href="tentangKami.php">Tentang Kami</a></li>
       </ul>
       <div class="reg-log mt-2">
         <a href="registrasi_revisi.php"><button class="btn btn-primary btn-lg px-4 me-md-2" type="button" id="reg">Registrasi</button></a>
@@ -63,19 +63,15 @@
       </div>
     </nav>
 
-    <main>
-      <div class="container col-xxl-8 px-4 py-5">
-        <div class="row flex-lg-row-reverse align-items-center g-5 py-2">
-          <div class="col-10 col-sm-8 col-lg-6">
-            <img src="images/Sapi.png" class="d-block mx-lg-auto img-fluid" alt="sapi" width="1280" height="720" loading="lazy">
-          </div>
-          <div class="col-lg-6">
-            <h1 class="display-5 fw-bold lh-1 mb-3">Mengapa MOWY?</h1>
-            <p class="lead" style="font-size: 400; color: #000000A6;">Kalau bisa menikmati susu dari sapi yang bahagia karena diberi kasih sayang, mengapa tidak?</p>
-            <a href="selengkapnya.php"><button class="btn-selengkapnya" type="button">Selengkapnya</button></a>
-          </div>
-        </div>
-        <div class="sosial-media">
+    <section class="content-tentang">
+      <img class="content gambar" src="images/tentangKami.jpeg" alt="">
+      <p class="content text">Mowy adalah website sistem informasi yang berfungsi membantu proses pengelolaan dan penjualan susu sapi pada mitra Dairy Farm Margo Utomo, Banyuwangi, Jawa Timur. Margo Utomo dalam bahasa Jawa berarti “Gerbang Utama”. Dibuat dengan harapan dan keinginan agar Kalibaru menjadi gerbang utama pariwisata di Banyuwangi dimana pengunjung akan menghargai keunikan daerah di Jawa Timur ini.
+        <br><br> Saat ini, Margo Utomo berhasil mengembangkan peternakan sapi perah untuk lebih dari 100 ekor sapi. Peternakan ini sudah menghasilkan banyak produk susu, seperti susu segar dengan berbagai rasa dan keju mozzarella.</p>
+    </section>
+
+    <footer class='content-sosialMedia'>
+      <h6 class="tentang-kami">Tetap terhubung dengan Mowy :</h6>
+      <div class="sosial-media tentang-sosialMedia">
           <a href="mowydairyfarm@gmail.com" target="_blank">
               <i class='sosial bx bxl-gmail' id="gmail"></i>
           </a>
@@ -86,7 +82,7 @@
               <i class='sosial bx bxl-whatsapp' id="whatsapp"></i>
           </a>          
         </div>
-    </main>
+    </footer>
 
     <div class="popup p-login">
       <div class="close-btn">&times;</div>

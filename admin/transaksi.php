@@ -138,7 +138,7 @@
                 <?php 
                 
                 require("../link/homepage/koneksi.php");
-                $query = "SELECT * FROM data_transaksi JOIN data_produk ON data_transaksi.id_produk = data_produk.id_produk JOIN data_user ON data_transaksi.id_pembeli = data_user.id  WHERE data_transaksi.status = 'Ongoing' OR data_transaksi.status = 'Berlangsung' ";
+                $query = "SELECT * FROM data_transaksi JOIN data_produk ON data_transaksi.id_produk = data_produk.id_produk JOIN data_user ON data_transaksi.id_pembeli = data_user.id  WHERE data_transaksi.status = 'Ongoing' OR data_transaksi.status = 'Berlangsung'";
                 $result = $conn -> query($query);
                 $i = 0;
                 while ($row = $result -> fetch_assoc()) :

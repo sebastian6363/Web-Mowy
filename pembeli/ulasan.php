@@ -21,7 +21,7 @@
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
 
     <!-- Style Web -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/ulasan.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
 
 </head>
@@ -114,16 +114,13 @@
 
     <!-- Main content -->
     <div class="home-content">
-        <div class="container col-xxl-8 px-4 py-5">
-            <div class="main-content row flex-lg-row-reverse align-items-center g-5 py-5">
-              <div class="col-10 col-sm-8 col-lg-6">
-              </div>
-              <div class="col-lg-6">
-                <h1 class="display-5 fw-bold lh-1 mb-3">Mengapa MOWY?</h1>
-                <p class="lead">Kalau bisa menikmati susu dari sapi yang bahagia karena diberi kasih sayang, mengapa tidak?</p>
-                <button id="info">Selengkapnya</button>
-              </div>
-            </div>
+        <div class="top-button">
+            <a href="ulasan.php">Menunggu Diulas</a>
+            <a href="ulasan1.php">Riwayat Ulasan</a>
+        </div>
+
+        <div>
+            <h3></h3>
         </div>
     </div>
     <!-- Akhir main content -->
