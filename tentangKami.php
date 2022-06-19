@@ -62,13 +62,17 @@
         <button class="btn btn-outline-secondary btn-lg px-4" id="log">Log in</button>
       </div>
     </nav>
-
+    <?php 
+    include 'link/homepage/koneksi.php';
+    $query = "SELECT * FROM data_informasi_website WHERE menu = 'Tentang Kami'";
+    $result = $conn -> query($query);
+    while ($row = $result -> fetch_assoc()) :
+    ?>
     <section class="content-tentang">
-      <img class="content gambar" src="images/tentangKami.jpeg" alt="">
-      <p class="content text">Mowy adalah website sistem informasi yang berfungsi membantu proses pengelolaan dan penjualan susu sapi pada mitra Dairy Farm Margo Utomo, Banyuwangi, Jawa Timur. Margo Utomo dalam bahasa Jawa berarti “Gerbang Utama”. Dibuat dengan harapan dan keinginan agar Kalibaru menjadi gerbang utama pariwisata di Banyuwangi dimana pengunjung akan menghargai keunikan daerah di Jawa Timur ini.
-        <br><br> Saat ini, Margo Utomo berhasil mengembangkan peternakan sapi perah untuk lebih dari 100 ekor sapi. Peternakan ini sudah menghasilkan banyak produk susu, seperti susu segar dengan berbagai rasa dan keju mozzarella.</p>
+      <img class="content gambar" src="images/website/<?php echo $row['gambar'] ?>" alt="">
+      <p class="content text"><?php echo $row['konten'] ?></p>
     </section>
-
+    <?php endwhile ?>
     <footer class='content-sosialMedia'>
       <h6 class="tentang-kami">Tetap terhubung dengan Mowy :</h6>
       <div class="sosial-media tentang-sosialMedia">

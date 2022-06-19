@@ -1,0 +1,17 @@
+.home-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.card {
+    background-color: transparent;
+    transition: .5s ease;
+}
+.card img {
+    border-radius: 20px;
+    cursor: pointer;
+}
+.card:hover{
+    transform: scale(1.15);
+}

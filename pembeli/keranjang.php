@@ -3,6 +3,7 @@
     session_start();
 
     $pembeli = $_SESSION['id'];
+    $nama    = $_SESSION['nama'];
 
     if($_SESSION['level'] == '') {
         header("location:index.php?pesan=gagal");
@@ -243,9 +244,14 @@
 
         $add_data = "INSERT INTO data_transaksi 
         (waktu_transaksi, bukti_transaksi, id_pembeli, id_produk, jumlah_produk, total, status)
-                VALUES ('$waktu', '$bukti', '$pelanggan', '$produk', '$jumlah', '$total', '$status') ";
+                VALUES ('$waktu', '$bukti', '$pelanggan', '$produk', '$jumlah', '$total', '$status');";
+
+        $add_data .= "INSERT INTO data_ulasan_produk (id_pembeli, id_produk, nama_pembeli, status, jumlah)
+                VALUES ('$pembeli', '$produk', '$nama', 'belum', '$jumlah');";
+
+        $add_data .= "DELETE FROM keranjang WHERE id_pembeli = '$pembeli'";
         
-        mysqli_query($conn, $add_data);
+        mysqli_multi_query($conn, $add_data);
 
         move_uploaded_file($_FILES['image']['tmp_name'], $target);
 

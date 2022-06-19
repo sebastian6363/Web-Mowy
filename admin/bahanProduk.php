@@ -2,6 +2,7 @@
     
     session_start();
 
+    $pegawai = $_SESSION['id'];
     if($_SESSION['level'] == '') {
         header("location:index.php?pesan=gagal");
     }
@@ -22,7 +23,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 
     <!-- Style Web -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bahanProduk.css">
 
 </head>
 <body>
@@ -51,7 +52,7 @@
 
         <!-- Nav Content -->
         <ul class="nav">
-            <li>
+        <li>
                 <a href="index.php">
                     <i class='bx bx-bar-chart-square'></i>
                     <span class="nav_name">Dashboard</span>
@@ -139,22 +140,64 @@
     </div>
     <!-- Akhir sidebar -->
 
+
     <!-- Main content -->
+
     <div class="home-content">
-        <div class="container col-xxl-8 px-4 py-5">
-            <div class="main-content row flex-lg-row-reverse align-items-center g-5 py-5">
-              <div class="col-10 col-sm-8 col-lg-6">
-              </div>
-              <div class="col-lg-6">
-                <h1 class="display-5 fw-bold lh-1 mb-3">Mengapa MOWY?</h1>
-                <p class="lead">Kalau bisa menikmati susu dari sapi yang bahagia karena diberi kasih sayang, mengapa tidak?</p>
-                <button id="info">Selengkapnya</button>
-              </div>
+        <div class="data-produk">
+            <div class="title">
+                <h1>Data Bahan Produk</h1>
+                <p>Menampilkan bahan produksi yang dibutuhkan untuk <br> pembuatan susu sapi Mowy</p>
+            </div>
+            <div class="data-tabel">
+                <table>
+                    <thead>
+                        <tr id="table-title">
+                            <th>ID Produksi</th>
+                            <th>Perisa</th>
+                            <th>Jumlah perisa</th>
+                            <th>Jumlah susu</th>
+                            <th>ID Pegawai</th>
+                            <th>Jml Botol</th>
+                            <th>Ukuran Botol</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php 
+                        
+                        require("../link/homepage/koneksi.php");
+                        $query = "SELECT * FROM data_bahan_produksi";
+                        $result = $conn -> query($query);
+                        while ($row = $result -> fetch_assoc()) :
+
+                        ?>
+
+                        <tr id="data-table">
+                            <td><?php echo $row['id_bahan']; ?></td>
+                            <td><?php echo $row['perisa']; ?></td>
+                            <td><?php echo $row['jumlah_perisa'] ?> gram</td>
+                            <td><?php echo $row['jumlah_susu']; ?> liter</td>
+                            <td><?php echo $row['id_pegawai']; ?> </td>
+                            <td><?php echo $row['jumlah_botol']; ?> biji</td>
+                            <td><?php echo $row['ukuran']; ?> ml</td>
+                            <td>
+                                <a href="editbahan.php?id=<?= $row["id_bahan"]; ?>">
+                                    <button type="button" class="bi bi-pencil-square" id="edit"></button>
+                                </a>
+                            </td>
+                        </tr>
+                        <?php endwhile ?>
+                    </tbody>
+                </table>
+                <div class="button-action">
+                    <button onclick="window.location.href='bahan-selanjutnya.php'" class="btn btn-sebelumnya">Selanjutnya</button>
+                </div>
             </div>
         </div>
     </div>
     <!-- Akhir main content -->
-
+    
     <!-- Scrip sidebar active -->
     <script>
         let btn = document.querySelector('#btn');
@@ -164,8 +207,8 @@
             sidebar.classList.toggle('active');
         }
     </script>
+    <!-- Akhir sidebar -->
 
-    
-    <script src="https://unpkg.com/boxicons@2.1.2/dist/boxicons.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>

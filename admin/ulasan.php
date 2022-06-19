@@ -2,6 +2,8 @@
     
     session_start();
 
+    $pembeli = $_SESSION['id'];
+
     if($_SESSION['level'] == '') {
         header("location:index.php?pesan=gagal");
     }
@@ -19,10 +21,10 @@
     <!-- Bootstrap Core -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 
     <!-- Style Web -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/ulasan.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
 
 </head>
 <body>
@@ -51,7 +53,7 @@
 
         <!-- Nav Content -->
         <ul class="nav">
-            <li>
+        <li>
                 <a href="index.php">
                     <i class='bx bx-bar-chart-square'></i>
                     <span class="nav_name">Dashboard</span>
@@ -141,16 +143,33 @@
 
     <!-- Main content -->
     <div class="home-content">
-        <div class="container col-xxl-8 px-4 py-5">
-            <div class="main-content row flex-lg-row-reverse align-items-center g-5 py-5">
-              <div class="col-10 col-sm-8 col-lg-6">
-              </div>
-              <div class="col-lg-6">
-                <h1 class="display-5 fw-bold lh-1 mb-3">Mengapa MOWY?</h1>
-                <p class="lead">Kalau bisa menikmati susu dari sapi yang bahagia karena diberi kasih sayang, mengapa tidak?</p>
-                <button id="info">Selengkapnya</button>
-              </div>
+        <div class="content">
+            <div class="top-title">
+                <h1>Ulasan Produk</h1>
+                <p>Menampilkan ulasan produk dari customer berdasarkan <br> waktu pengulasan</p>
             </div>
+            <?php 
+            include '../link/homepage/koneksi.php';
+            $query = "SELECT * FROM data_ulasan_produk JOIN data_produk ON data_ulasan_produk.id_produk = data_produk.id_produk JOIN data_user ON data_ulasan_produk.id_pembeli = data_user.id WHERE data_ulasan_produk.status = 'sudah'";
+            $hasil = $conn->query($query);
+            while ($row = $hasil->fetch_assoc()):
+            ?>
+            <div class="review">
+                <div class="review-header">
+                    <h1 class="h3"><?php echo $row['waktu'] ?> <span>dari</span> <?php echo $row['nama'] ?></h1>
+                </div>
+                <div class="review-content">
+                    <div class="review-gambar">
+                        <img src="../images/ulasan/<?php echo $row['gambar'] ?>" class="gambar_ulasan">
+                    </div>
+                    <div class="review-product">
+                        <h1 class="h3 review-ok"><?php echo $row['nama_produk'] ?></h1>
+                        <p class="info-product">5 pcs &#x2022;<span> Rating: <?php echo $row['rating'] ?>/5</span></p>
+                        <p class="ulas"><?php echo $row['ulasan'] ?></p>
+                    </div>
+                </div>
+            </div>
+            <?php endwhile ?>
         </div>
     </div>
     <!-- Akhir main content -->

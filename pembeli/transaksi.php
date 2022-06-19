@@ -123,7 +123,7 @@
 
             require "../link/homepage/koneksi.php";
 
-            $query = "SELECT * FROM data_transaksi JOIN data_produk ON data_transaksi.id_produk = data_produk.id_produk WHERE data_transaksi.status = 'Berlangsung' OR data_transaksi.status = 'Ongoing'";
+            $query = "SELECT * FROM data_transaksi JOIN data_produk ON data_transaksi.id_produk = data_produk.id_produk WHERE data_transaksi.status = 'Berlangsung'";
             $result = $conn -> query($query);
 
             while ($row = $result -> fetch_assoc()):

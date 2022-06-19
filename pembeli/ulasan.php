@@ -1,7 +1,7 @@
 <?php 
     
     session_start();
-
+    $pembeli = $_SESSION['id'];
     if($_SESSION['level'] == '') {
         header("location:index.php?pesan=gagal");
     }
@@ -114,13 +114,42 @@
 
     <!-- Main content -->
     <div class="home-content">
-        <div class="top-button">
-            <a href="ulasan.php">Menunggu Diulas</a>
-            <a href="ulasan1.php">Riwayat Ulasan</a>
-        </div>
+        <div class="content">
+            <?php 
+            include "../link/homepage/koneksi.php";
+            $total = "SELECT COUNT(*) AS jumlah FROM data_ulasan_produk WHERE status = 'berlangsung' AND id_pembeli = '$pembeli'";
+            $hasil = $conn->query($total);
+            while ($row = $hasil->fetch_assoc()):
+            ?>
+            <div class="top-button">
+                <div class="action-btn active -left">
+                    <a href="ulasan.php" class="ulasan menunggu active">Menunggu Diulas (<?php echo $row['jumlah'] ?>)</a>
+                </div>
+                <div class="action-btn -right">
+                    <a href="ulasan-riwayat.php" class="ulasan riwayat">Riwayat Ulasan</a>
+                </div>
+            </div>
+            <?php endwhile ?>
 
-        <div>
-            <h3></h3>
+            <?php 
+            $query = "SELECT * FROM data_ulasan_produk INNER JOIN data_produk ON data_ulasan_produk.id_produk = data_produk.id_produk WHERE data_ulasan_produk.status = 'berlangsung' AND data_ulasan_produk.id_pembeli = '$pembeli'";
+            $hasil = $conn->query($query);
+            while($row = $hasil->fetch_assoc()):
+            ?>
+            <div class="review -menunggu">
+                <div class="review-gambar">
+                    <img src="../images/product/<?php echo $row['gambar_produk'] ?>" alt="">
+                </div>
+                <div class="review-menunggu">
+                    <p class="tanggal"><?php echo $row['waktu'] ?></p>
+                    <div class="status-menunggu">
+                        <h4 class="review-product"><?php echo $row['nama_produk'] ?> (<?php echo $row['jumlah'] ?> pcs)</h4>
+                        <p class="info-product">Rating: 1/2/3/4/5</p>
+                    </div>
+                    <a href="tambahUlasan.php?id=<?= $row["id_ulasan"]; ?>"><button>Tambah</button></a>
+                </div>
+            </div>
+            <?php endwhile ?>
         </div>
     </div>
     <!-- Akhir main content -->

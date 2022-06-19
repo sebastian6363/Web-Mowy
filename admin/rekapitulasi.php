@@ -2,6 +2,7 @@
     
     session_start();
 
+    $pegawai = $_SESSION['id'];
     if($_SESSION['level'] == '') {
         header("location:index.php?pesan=gagal");
     }
@@ -22,7 +23,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 
     <!-- Style Web -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bahanProduk.css">
 
 </head>
 <body>
@@ -51,7 +52,7 @@
 
         <!-- Nav Content -->
         <ul class="nav">
-            <li>
+        <li>
                 <a href="index.php">
                     <i class='bx bx-bar-chart-square'></i>
                     <span class="nav_name">Dashboard</span>
@@ -139,22 +140,117 @@
     </div>
     <!-- Akhir sidebar -->
 
+
     <!-- Main content -->
+
     <div class="home-content">
-        <div class="container col-xxl-8 px-4 py-5">
-            <div class="main-content row flex-lg-row-reverse align-items-center g-5 py-5">
-              <div class="col-10 col-sm-8 col-lg-6">
-              </div>
-              <div class="col-lg-6">
-                <h1 class="display-5 fw-bold lh-1 mb-3">Mengapa MOWY?</h1>
-                <p class="lead">Kalau bisa menikmati susu dari sapi yang bahagia karena diberi kasih sayang, mengapa tidak?</p>
-                <button id="info">Selengkapnya</button>
-              </div>
+        <div class="data-produk">
+            <div class="title">
+                <h1>Rekapitulasi Keuangan</h1>
+                <p>Menampilkan ringkasan isi atau ikhtisar pada akhir laporan atau <br>
+akhir hitungan</p>
+            </div>
+            <div class="data-tabel">
+                <table>
+                    <thead>
+                        <tr id="table-title">
+                            <th>Tanggal</th>
+                            <th>Jumlah Transaksi</th>
+                            <th>Jumlah Biaya Produksi</th>
+                            <th>Laba/Rugi</th>
+                            <th>aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php 
+                        
+                        require("../link/homepage/koneksi.php");
+                        $query = "SELECT * FROM data_rekapitulasi";
+                        $result = $conn -> query($query);
+                        while ($row = $result -> fetch_assoc()) :
+
+                        ?>
+
+                        <tr id="data-table">
+                            <td><?php echo $row['tanggal']; ?></td>
+                            <td>Rp. <?php echo $row['transaksi']; ?></td>
+                            <td>Rp. <?php echo $row['biaya'] ?></td>
+                            <td>Rp. <?php echo $row['hasil']; ?></td>
+                            <td>
+                                <a href="edit_rekap.php?id=<?= $row["id_rekapitulasi"]; ?>">
+                                    <button type="button" class="bi bi-pencil-square" id="edit"></button>
+                                </a>
+                            </td>
+                        </tr>
+                        <?php endwhile ?>
+                    </tbody>
+                </table>
+                <div class="button-action">
+                    <button class="btn btn-tambah" type="button" id="tambah">Tambah data</button>
+                </div>
             </div>
         </div>
     </div>
     <!-- Akhir main content -->
+    
+        <div class="popup-tambah" id="add">
+            <div class="wrap container">
+                <div class="title-2">
+                    <h1>Form Menambah Rekapitulasi Keuangan </h1>
+                    <p>Tambahkan data rekapitulasi bulanan Anda dengan <br>
+mengisi form berikut ini!</p>
+                </div>
+ 
+                <form class="form" action="#" method="POST" enctype="multipart/form-data">
+                    <div class="form-element">
+                        <label for="tanggal">Tanggal</label>
+                        <input type="date" name="tanggal" class="form-control" id="tanggal" required>
+                    </div>
+                    <div class="form-element">
+                        <label for="transaksi">Jumlah Transaksi</label>
+                        <input type="number" name="transaksi" class="form-control" id="transaksi" required>
+                    </div>
+                    <div class="form-element">
+                        <label for="biaya">Jumlah Biaya Produksi</label>
+                        <input type="number" name="biaya" class="form-control" id="biaya" required>
+                    </div>
+                    <div class="btn">
+                        <button class="batal" type="button" id="batal">Batal</button>
+                        <button class="submit" type="submit" name="submit" id="submit">Simpan</button>
+                    </div>
+                </form>
+            </div>
+        </div>
 
+
+        <?php 
+    
+    if (isset($_POST['submit'])) {
+
+        // Ambil semua data
+        $tanggal       = $_POST['tanggal'];
+        $transaksi      = $_POST['transaksi'];
+        $biaya     = $_POST['biaya'];
+        $total     = $transaksi - $biaya;
+
+        $add_data = "INSERT INTO data_rekapitulasi 
+    (tanggal, transaksi, biaya, hasil)
+                        VALUES
+    ('$tanggal', '$transaksi', '$biaya', '$total')";
+    
+    mysqli_query($conn, $add_data);
+
+    ?>
+    <script type="text/javascript">
+        alert("Add data Successfull")
+        window.location = 'rekapitulasi.php'
+    </script>
+    <?php  
+    }
+?>
+
+    
+        
     <!-- Scrip sidebar active -->
     <script>
         let btn = document.querySelector('#btn');
@@ -164,8 +260,8 @@
             sidebar.classList.toggle('active');
         }
     </script>
+    <!-- Akhir sidebar -->
 
-    
-    <script src="https://unpkg.com/boxicons@2.1.2/dist/boxicons.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>

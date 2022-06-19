@@ -19,6 +19,7 @@
 <?php 
 
 session_start();
+$id_pegawai = $_SESSION['id'];
 require "../link/homepage/koneksi.php";
 
 $id = $_GET['id'];
@@ -30,7 +31,7 @@ while ($row = $result -> fetch_assoc()) :
 <div class="popup">
         <div class="wrap container">
             <div class="title-2">
-                <h1>Ubah Status</h1>
+                <h1><?php echo $id_pegawai ?></h1>
                 <p>Ubah status dengan cara memilih salah satu!</p>
             </div>
             <form class="form" action="#" method="POST" enctype="multipart/form-data">
@@ -62,9 +63,12 @@ while ($row = $result -> fetch_assoc()) :
 
         $edit_data = "UPDATE data_transaksi set
                         status = '$status', id_pegawai = '$id_pegawai'
-                        WHERE id_transaksi = '$id'";
+                        WHERE id_transaksi = '$id';";
 
-        mysqli_query($conn, $edit_data);
+        if($_POST['status'] = 'Riwayat') {
+            $edit_data .= "UPDATE data_ulasan_produk set status = 'berlangsung' WHERE id_ulasan = '$id'";
+        }
+        mysqli_multi_query($conn, $edit_data);
         ?>
         <script type="text/javascript">
             alert("Edit data Successfull")

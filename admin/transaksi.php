@@ -51,7 +51,7 @@
 
         <!-- Nav Content -->
         <ul class="nav">
-            <li>
+        <li>
                 <a href="index.php">
                     <i class='bx bx-bar-chart-square'></i>
                     <span class="nav_name">Dashboard</span>
@@ -85,6 +85,34 @@
                     <span class="nav_name">Data Pegawai</span>
                 </a>
                 <span class="tool_tip">Data Pegawai</span>
+            </li>
+            <li>
+                <a href="website.php">
+                    <i class="bi bi-diagram-2"></i>
+                    <span class="nav_name">Informasi Website</span>
+                </a>
+                <span class="tool_tip">Informasi Website</span>
+            </li>
+            <li>
+                <a href="bahanProduk.php">
+                    <i class='bi bi-file-earmark-minus'></i>
+                    <span class="nav_name">Bahan Produk</span>
+                </a>
+                <span class="tool_tip">Bahan Produk</span>
+            </li>
+            <li>
+                <a href="ulasan.php">
+                    <i class="bi bi-envelope-open"></i>
+                    <span class="nav_name">Ulasan</span>
+                </a>
+                <span class="tool_tip">Ulasan</span>
+            </li>
+            <li>
+                <a href="rekapitulasi.php">
+                    <i class="bi bi-cash"></i>
+                    <span class="nav_name">Rekapitulasi</span>
+                </a>
+                <span class="tool_tip">Rekapitulasi</span>
             </li>
             <li>
                 <a href="profil.php">

@@ -51,7 +51,7 @@
 
         <!-- Nav Content -->
         <ul class="nav">
-            <li>
+        <li>
                 <a href="index.php">
                     <i class='bx bx-bar-chart-square'></i>
                     <span class="nav_name">Dashboard</span>
@@ -85,6 +85,34 @@
                     <span class="nav_name">Data Pegawai</span>
                 </a>
                 <span class="tool_tip">Data Pegawai</span>
+            </li>
+            <li>
+                <a href="website.php">
+                    <i class="bi bi-diagram-2"></i>
+                    <span class="nav_name">Informasi Website</span>
+                </a>
+                <span class="tool_tip">Informasi Website</span>
+            </li>
+            <li>
+                <a href="bahanProduk.php">
+                    <i class='bi bi-file-earmark-minus'></i>
+                    <span class="nav_name">Bahan Produk</span>
+                </a>
+                <span class="tool_tip">Bahan Produk</span>
+            </li>
+            <li>
+                <a href="ulasan.php">
+                    <i class="bi bi-envelope-open"></i>
+                    <span class="nav_name">Ulasan</span>
+                </a>
+                <span class="tool_tip">Ulasan</span>
+            </li>
+            <li>
+                <a href="rekapitulasi.php">
+                    <i class="bi bi-cash"></i>
+                    <span class="nav_name">Rekapitulasi</span>
+                </a>
+                <span class="tool_tip">Rekapitulasi</span>
             </li>
             <li>
                 <a href="profil.php">
@@ -197,6 +225,14 @@
                         <input type="text" name="berat_produk" class="form-control" id="berat_produk" placeholder="Contoh: 200" required>
                     </div>
                     <div class="form-element">
+                        <label for="if_sesudah">Sesudah dibuka:</label>
+                        <input type="text" name="if_sesudah" class="form-control" id="if_sesudah" placeholder="Contoh: 200" required>
+                    </div>
+                    <div class="form-element">
+                        <label for="if_sebelum">Sebelum dibuka:</label>
+                        <input type="text" name="if_sebelum" class="form-control" id="if_sebelum" placeholder="Contoh: 200" required>
+                    </div>
+                    <div class="form-element">
                         <label for="tanggal_kedaluwarsa">Tanggal Kadaluarsa</label>
                         <input type="datetime-local" name="tanggal_kedaluwarsa" class="form-control" id="tanggal_kedaluwarsa" placeholder="Susu Mowy" required>
                     </div>
@@ -231,17 +267,19 @@
         $harga = $_POST['harga_produk'];
         $berat = $_POST['berat_produk'];
         $tanggal = $_POST['tanggal_kedaluwarsa'];
+        $if_sebelum = $_POST['if_sebelum'];
+        $if_sesudah = $_POST['if_sesudah'];
 
         $add_data = "INSERT INTO data_produk 
-    (nama_produk, gambar_produk, rasa_produk, harga_produk, berat_produk, tanggal_kedaluwarsa)
+    (nama_produk, gambar_produk, rasa_produk, harga_produk, berat_produk, tanggal_kedaluwarsa, if_sebelum, if_sesudah)
                         VALUES
-    ('$nama', '$image', '$rasa', '$harga', '$berat', '$tanggal')";
+    ('$nama', '$image', '$rasa', '$harga', '$berat', '$tanggal', '$if_sebelum', '$if_sesudah')";
     
 
     // Move gambar ke path
     move_uploaded_file($_FILES['image']['tmp_name'], $target);
 
-    $cek = mysqli_query($conn, $add_data);
+    mysqli_query($conn, $add_data);
 
     ?>
     <script type="text/javascript">

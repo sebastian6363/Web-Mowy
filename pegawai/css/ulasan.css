@@ -11,7 +11,7 @@ body {
     min-height: 100vh;
     width: 100%;
     background-image: url('../../images/moww-2.png');
-    background-size: cover;
+    background-size: repeat;
 } 
 
 .sidebar #devider {
@@ -302,7 +302,7 @@ body {
     text-decoration: none;
     color: black;
 }
-.review{
+.review {
     background-color: white;
     padding: 0 30px;
     padding-top: 15px;
@@ -310,62 +310,62 @@ body {
     margin-bottom: 10px;
     box-shadow: 5px 10px 9px -6px #333;
 }
-.review .review-header {
-    line-height: 5px;
+.review-header{
     color: #6F9DFF;
-    max-height: fit-content;
 }
-.review .review-header .review-product{
+.review-header h1{
+    font-size: 1.2em;
+    font-weight: 700;
+    margin-top: 15px;
+}
+.review-header span{
+    font-weight: lighter;
+}
+.review-content{
     display: flex;
-    justify-content: space-between;
-    font-size: 1.3em;
+    justify-content: left;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+.review-gambar{
+    width: 30%;
+    margin-right: 30px;
+    margin-bottom: 35px;
+}
+.review-gambar img{
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    object-position: center center;
+    border-radius: 25px;
+}
+.review-product {
+    color: #6F9DFF;
+    margin-bottom: 35px;
+    width: 100%;
+}
+.review-ok{
+    font-size: 1.2em;
+    font-weight: 700;
+}
+.top-title{
+    text-align: center;
+    margin-bottom: 50px;
+}
+.top-title h1{
+    color: #6F9DFF;
+    font-weight: 700;
+}
+.top-title p{
+    color: #8B8B8B;
     font-weight: 500;
 }
-.review .review-header .info-product{
+.info-product {
     font-style: italic;
 }
-.review .ulas{
+.ulas {
     color: #8B8B8B;
-}
-
-.-menunggu {
-    display: flex;
-    padding-top: 15px;
     padding-bottom: 10px;
-    margin-right: 0px;
-}
-.-menunggu .review-gambar {
-    width: 15%;
-}
-.-menunggu .review-gambar img{
-    width: 100%;
-    border-radius: 15px;
-    box-shadow: 6px 6px 10px -5px;
-}
-.-menunggu .review-menunggu {
-    margin-left: 25px;
-    width: 100%;
-}
-.review-menunggu button{
-    float: right;
-    color: #6F9DFF;
-    border: 2px solid #6F9DFF;
-    width: 15%;
-    border-radius: 20px;
-    background-color: white;
-}
-.review-menunggu button:hover{
-    color: white;
-    background-color: #6F9DFF;
-}
-.status-menunggu {
-    color: #6F9DFF;
-}
-.status-menunggu h4{
-    font-weight: 700;
-    font-size: 1.2em;
-}
-.review .gambar_ulasan{
-    width: 20%;
-    height: 20%;
+    border-bottom: 1px solid #8B8B8B;
 }

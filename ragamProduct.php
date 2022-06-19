@@ -31,6 +31,7 @@
     <!-- Custom styles for this web -->
     <link rel="stylesheet" href="link/homepage/css/style.css">
     <link rel="stylesheet" href="link/homepage/css/signin.css">
+    <link rel="stylesheet" href="link/homepage/css/produk.css">
 
   </head>
   <body>
@@ -63,16 +64,20 @@
     </nav>
 
     <main>
-      <div class="container col-xxl-8 px-4 py-5">
-        <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
-          <div class="col-10 col-sm-8 col-lg-6">
-            <img src="images/Sapi.png" class="d-block mx-lg-auto img-fluid" alt="sapi" width="1280" height="720" loading="lazy">
-          </div>
-          <div class="col-lg-6">
-            <h1 class="display-5 fw-bold lh-1 mb-3">Mengapa MOWY?</h1>
-            <p class="lead" style="font-size: 400; color: #000000A6;">Kalau bisa menikmati susu dari sapi yang bahagia karena diberi kasih sayang, mengapa tidak?</p>
-          </div>
+    <div class="home-content">
+        <?php 
+            require_once("link/homepage/koneksi.php");
+            $sql = "SELECT * FROM data_produk";
+            $result = $conn->query($sql);
+            while ($row = $result->fetch_assoc()) :
+        ?> 
+        <a href="beli.php?id=<?= $row["id_produk"]; ?>" >
+        <div class="card m-4" style="width: 14rem; border: none;">
+            <img class="card-img-top" src="images/product/<?php echo $row['gambar_produk']; ?>" alt="Card image cap">
         </div>
+        </a>
+        <?php endwhile ?>
+    </div>
     </main>
 
     <div class="popup p-login">

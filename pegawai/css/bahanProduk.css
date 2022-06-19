@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,700;0,800;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,700;0,800;1,400&display=swap');
 
 * {
     font-family: 'Poppins', sans-serif;
@@ -11,7 +11,7 @@ body {
     min-height: 100vh;
     width: 100%;
     background-image: url('../../images/moww-2.png');
-    background-size: cover;
+    background-size: repeat;
 } 
 
 .sidebar #devider {
@@ -30,6 +30,7 @@ body {
     top: 0;
     left: 0;
     width: 80px;
+    height: 100%;
     background: white;
     padding: 6px 16px;
     height: 100%;
@@ -68,7 +69,7 @@ body {
 
 .sidebar.active {
     width: 280px;
-    overflow-y: auto;
+    overflow-y: scroll;
 }
 
 .sidebar .logo-content .logo #logo {
@@ -193,6 +194,7 @@ body {
 .sidebar ul li a:hover {
     color: white;
     background: #6F9DFF;
+    z-index: 3;
 }
 
 .sidebar ul li .tool_tip {
@@ -213,7 +215,7 @@ body {
     pointer-events: none;
     opacity: 0;
     transition: all 0.5s ease;
-    z-index: 2;
+    z-index: 3;
 }
 
 .sidebar.active ul li .tool_tip {
@@ -223,21 +225,18 @@ body {
 .sidebar ul li:hover .tool_tip{
     opacity: 1;
     top: 50%;
+    z-index: 3;
 }
 
 .home-content {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     position: relative;
-    height: 100%;
+    height: 100vh;
     width: calc(100% - 80px);
     left: 80px;
-    align-items: center;
     transition: all .5s ease;
-}
-
-.home-content .main-content {
-    margin-left: 65px;
-    margin-top: 60px;
-    display: flex;
 }
 
 .sidebar.active ~ .home-content {
@@ -246,126 +245,205 @@ body {
 }
 
 /* Main Content */
+.title {
+    transition: all .5s ease;
+    pointer-events: none;
+}
 
-#info {
-    border: none;
-    color: white;
-    background-color: #6F9DFF;
-    font-size: 18px;
+.title h1{
+    text-align: center;
+    margin-top: 30px;
+    color: #6F9DFF;
+    font-weight: 700;
+}
+
+.title p{
+    text-align: center;
+    color: rgb(66, 66, 66);
+}
+
+.sidebar.active ~ .title {
+    left: 280px;
+    width: calc(100% - 280px);
+}
+
+/* TABEL PRODUK */
+.data-produk{
+    width: 80%;
+    margin: 0 auto;
+}
+.data-tabel{
+    padding: 20px;
+    background-color: white ;
     border-radius: 35px;
-    width: 60%;
-    height: 50px;
-    margin-top: 25px;
-    transition: all ease 0.3s;
+    box-shadow: 8px 10px 10px -6px #939393;
 }
-
-#info:hover {
-    filter: brightness(1.1);
+table {
+    border-collapse: collapse;
+    table-layout: fixed;
+    margin-top: 50px;
+    width: 100%;
 }
-
-.content{
-    margin: 50px 35px;
-}
-.top-button{
-    display: flex;
+table tr{
+    border: 1px solid rgb(168, 168, 168);
     background-color: white;
     text-align: center;
-    margin-bottom: 20px;   
-    border-top-right-radius: 30px; 
-    border-top-left-radius: 30px;
-    font-size: 1.1em;
-    font-weight: 500;
-    box-shadow: 10px 14px 6px -9px rgb(113, 113, 113);
-    justify-content: space-around;
+    align-items: center;
+    border-left: none;
+    border-right: none;
 }
-.action-btn{
-    width: 100%;
+table td {
     padding: 10px;
-    cursor: pointer;
+    text-align: center;
+    color: rgb(168, 168, 168);
+    font-weight: 300;
 }
-.action-btn:hover, .top-button a:hover{
-    background-color: #4067B8;
-    color: white;
+table th {
+    text-transform: uppercase;
+    padding: 8px;
+    font-size: 14px;
 }
-.action-btn.active, .ulasan.active{
-    background-color: #4067B8;
-    color: white;
-}
-.-left{
-    border-top-left-radius: 30px;
-}
-.-right{
-    border-top-right-radius: 30px;
-}
-.ulasan{
-    width: 100%;
-    text-decoration: none;
-    color: black;
-}
-.review{
-    background-color: white;
-    padding: 0 30px;
-    padding-top: 15px;
-    border-radius: 15px;
-    margin-bottom: 10px;
-    box-shadow: 5px 10px 9px -6px #333;
-}
-.review .review-header {
-    line-height: 5px;
-    color: #6F9DFF;
-    max-height: fit-content;
-}
-.review .review-header .review-product{
+.button-action {
     display: flex;
     justify-content: space-between;
-    font-size: 1.3em;
+    margin-top: 30px;
+    border-top: 1px solid #333;
+    border-bottom: 1px solid #333;
+}
+.button-action .btn {
+    border: none;
+    border-radius: 30px;
     font-weight: 500;
+    transition: all .5s ease;
 }
-.review .review-header .info-product{
-    font-style: italic;
+.button-action .btn:hover{
+    transform: scale(1.1);
+    color: white;
 }
-.review .ulas{
-    color: #8B8B8B;
+.btn-tambah{
+    background-color: #1DBA40;
+    color: white;
+    width: 30%;
+}
+.btn-sebelumnya {
+    background-color: #6F9DFF;
+    color: white;
+    width: 25%;
 }
 
-.-menunggu {
-    display: flex;
-    padding-top: 15px;
-    padding-bottom: 10px;
-    margin-right: 0px;
+
+/* POPUP */
+.popup-tambah {
+    position: absolute;
+    align-items: center;
+    text-align: left;
+
+    top: 50%;
+    left: 50%;
+    width: 40%;
+    padding: 25px 35px;
+    transform: translate(-50%, -50%);
+    transition: all .5s ease;
+
+    background: white;
+    box-shadow: 2px 2px 5px 5px rgba(0, 0, 0, 0.15);
+    border-radius: 35px;
+    z-index: 2;
+    opacity: 0;
+    pointer-events: none;
 }
-.-menunggu .review-gambar {
-    width: 15%;
+.popup-tambah.active {
+    opacity: 1;
+    pointer-events: visible;
 }
-.-menunggu .review-gambar img{
-    width: 100%;
-    border-radius: 15px;
-    box-shadow: 6px 6px 10px -5px;
+
+.popup-tambah .title-2 {
+    margin-bottom: 25px;
+    text-align: center;
 }
-.-menunggu .review-menunggu {
-    margin-left: 25px;
-    width: 100%;
-}
-.review-menunggu button{
-    float: right;
+.popup-tambah .title-2 h1 {
+    font-weight: 700;
     color: #6F9DFF;
+}
+.popup-tambah .title-2 p {
+    font-weight: 400;
+    font-size: 14px;
+    color: #000000A6;
+}
+
+.popup-tambah .form .form-element {
+    margin: 15px 0;
+}
+.popup-tambah .form .form-element label {
+    font-weight: 500;
+}
+.popup-tambah .form .form-element input {
+    font-size: 14px;
+    color: #00000094;
+    padding: auto 15px;
+
+    border: none;
+    border-radius: 30px;
+    background-color: #0000000D;
+}
+
+.popup-tambah .form .sprt {
+    padding-left: 0;
+}
+
+.popup-tambah .form .btn {
+    margin: 20px auto;
+    margin-bottom: 0;
+    width: 100%;
+
+    justify-content: space-between;
+}
+#batal {
+    margin: auto 5px;
+    font-weight: 500;
+    width: 40%;
+
     border: 2px solid #6F9DFF;
-    width: 15%;
     border-radius: 20px;
     background-color: white;
-}
-.review-menunggu button:hover{
-    color: white;
-    background-color: #6F9DFF;
-}
-.status-menunggu {
     color: #6F9DFF;
+    transition: all .5s ease;
 }
-.status-menunggu h4{
-    font-weight: 700;
-    font-size: 1.2em;
+#submit {
+    margin: auto 5px;
+    font-weight: 500;
+    width: 40%;
+
+    border: 2px solid #6F9DFF;
+    border-radius: 20px ;
+    background-color: #6F9DFF;
+    color: white;
+    transition: all .5s ease;
 }
-.review .gambar_ulasan{
-    width: 20%;
-    height: 20%;
+#edit {
+    border: none; 
+    background-color: white; 
+    color: red;
+    width: 24px;
+}
+#edit:hover {
+    border: 1px solid red;
+}
+#batal:hover, #submit:hover{
+    transform: scale(1.10);
+}
+
+#status {
+    width: 100%;
+    border: 3px solid #6F9DFF;
+    color: #6F9DFF;
+    background-color: white;
+    border-radius: 25px;
+    transition: all .4s ease;
+}
+
+#status:hover {
+    transform: scale(1.05);
+    background-color: #6F9DFF;
+    color: white;
 }
