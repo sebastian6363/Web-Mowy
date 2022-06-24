@@ -207,10 +207,6 @@ pada dashboard Mowy</p>
                         <label for="konten">Isi</label>
                         <input type="text" name="konten" class="form-control" id="konten" required>
                     </div>
-                    <div class="form-element">
-                        <label for="gambar">Upload Gambar</label>
-                        <input type="file" name="gambar" class="form-control" id="gambar">
-                    </div>
                     <div class="btn">
                         <button class="batal" type="button" id="batal">Batal</button>
                         <button class="submit" type="submit" name="submit" id="submit">Simpan</button>
@@ -223,28 +219,23 @@ pada dashboard Mowy</p>
         <?php 
     
     if (isset($_POST['submit'])) {
-        $target = "../images/website/".basename($_FILES['image']['name']);
 
         // Ambil semua data
         $menu       = $_POST['menu'];
         $judul      = $_POST['judul'];
         $konten     = $_POST['konten'];
-        $gambar     = $_FILES['image']['name'];
 
         $add_data = "UPDATE data_informasi_website SET
                             menu    = '$menu',
                             judul   = '$judul',
-                            konten  = '$konten',
-                            gambar  = '$gambar'
+                            konten  = '$konten'
                     WHERE menu = '$menu'
                             ";
-    
-    move_uploaded_file($_FILES['image']['tmp_name'], $target);
     mysqli_query($conn, $add_data);
 
     ?>
     <script type="text/javascript">
-        alert("Add data Successfull")
+        alert("Update data Successfull")
         window.location = 'website.php'
     </script>
     <?php  

@@ -92,7 +92,7 @@ while ($row = $result -> fetch_assoc()):
                                 border-radius: 15px;
                                 color: #6F9DFF;
                                 padding-left: 10px;"
-                                >Jumlah: <input type="number" style="
+                                >Jumlah: <input autocomplete="off" type="number" style="
                                 border: none; 
                                 border-radius: 15px; 
                                 width: 100%; 
